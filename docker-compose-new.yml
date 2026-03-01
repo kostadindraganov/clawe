@@ -17,7 +17,6 @@ services:
 
   squadhub:
     image: 'ghcr.io/getclawe/clawe/squadhub:latest'
-    user: '${UID:-1000}:${GID:-1000}'
     environment:
       - 'SQUADHUB_TOKEN=${SQUADHUB_TOKEN}'
       - 'CONVEX_URL=${CONVEX_URL}'
@@ -25,9 +24,10 @@ services:
       - 'squadhub-data:/data'
     healthcheck:
       test: ['CMD', 'wget', '-q', '--spider', 'http://localhost:18789/health']
-      interval: 5s
-      timeout: 3s
-      retries: 10
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
     restart: unless-stopped
 
   watcher:
