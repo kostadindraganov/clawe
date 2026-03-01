@@ -9,6 +9,7 @@ services:
       - 'SQUADHUB_TOKEN=${SQUADHUB_TOKEN}'
       - SQUADHUB_STATE_DIR=/squadhub-data/config
       - ENVIRONMENT=dev
+      - CLAWE_EDITION=oss
     volumes:
       - 'squadhub-data:/squadhub-data:ro'
     depends_on:
@@ -21,6 +22,7 @@ services:
     environment:
       - 'SQUADHUB_TOKEN=${SQUADHUB_TOKEN}'
       - 'CONVEX_URL=${CONVEX_URL}'
+      - 'CLAWE_EDITION=oss'
     volumes:
       - 'squadhub-data:/data'
     healthcheck:
@@ -36,6 +38,7 @@ services:
     environment:
       - 'CONVEX_URL=${CONVEX_URL}'
       - 'WATCHER_TOKEN=${WATCHER_TOKEN}'
+      - 'CLAWE_EDITION=oss'
     depends_on:
       squadhub:
         condition: service_healthy
